@@ -1,0 +1,45 @@
+<div style="text-align: center;">
+    <h1> Super Hero's List</h1>
+</div>
+<mat-card>
+    <mat-card-content>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+              
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.biography.fullName}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="aliase">
+                    <th mat-header-cell *matHeaderCellDef> Aliase </th>
+                    <td mat-cell *matCellDef="let element"> {{element.biography.aliases[0]}} </td>
+                  </ng-container>
+ 
+                  <ng-container matColumnDef="birthplace">
+                    <th mat-header-cell *matHeaderCellDef> Place Of Birth </th>
+                    <td mat-cell *matCellDef="let element"> {{element.biography.placeOfBirth}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef> Gender </th>
+                    <td mat-cell *matCellDef="let element"> {{element.appearance.gender}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="occupation">
+                    <th mat-header-cell *matHeaderCellDef> Occupation </th>
+                    <td mat-cell *matCellDef="let element"> {{element.work.occupation}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                               showFirstLastButtons 
+                               aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+            </mat-card-content>
+        </mat-card>        
+      
